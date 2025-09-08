@@ -5,7 +5,9 @@
 import Image from "next/image";
 import React from "react";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import { useState } from 'react';
 
+//export default -> main component of page
 export default function Home() {
 const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "guave", "Pineapple", "Grapes"]
  
@@ -32,7 +34,7 @@ const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "guave", "Pineapple
 
 function EventButton(){
   //state gives possibility to save a value, first item of array is the value, second a setter
-const [likes, setLikes] = React.useState(0);
+const [likes, setLikes] = useState(0);
 
   return(
     <div>
