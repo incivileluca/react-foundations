@@ -2,6 +2,8 @@ import Image from "next/image";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 export default function Home() {
+const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "Kiwi", "Pineapple", "Grapes"]
+
   return (
  <div>
   <Header/>
@@ -10,11 +12,31 @@ export default function Home() {
   <DivwithContent content="world"/>
   <DivwithContentFallback/>
   <DivwithContentFallback content="Fallback not needed"/>
+  <br/>
+  <ProductList products={PRODUCTS}/>
 
   <Footer/>
   </div>
 
   );
+}
+
+//note: there seems to bee an TS Error regarding the passing of generics as attrbutes
+function ProductList({products}: Array<String>){
+
+return(
+<>
+  <div>We currrently offer these products:</div>
+  <ul>
+    {
+      products.map(
+        (productName) => (<li key={productName}>{productName}</li>) 
+      )
+    }
+  </ul>
+</>
+);
+
 }
 
 //Question: should props be declared as type any? Better solutions?
