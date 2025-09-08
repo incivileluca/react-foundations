@@ -1,12 +1,18 @@
+//this is needed to specify this file as FE-code: https://react.dev/reference/rsc/use-client
+//the event-handlers section, would not work without it
+'use client';
+
 import Image from "next/image";
+import React from "react";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 export default function Home() {
-const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "Kiwi", "Pineapple", "Grapes"]
-
-  return (
+const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "guave", "Pineapple", "Grapes"]
+ 
+    return (
  <div>
   <Header/>
+
   <h6>inline fixed HTML</h6>
   <AcceptsProps content="hello"/>
   <DivwithContent content="world"/>
@@ -14,12 +20,37 @@ const PRODUCTS: Array<String>= ["Apple", "Orange", "Banana", "Kiwi", "Pineapple"
   <DivwithContentFallback content="Fallback not needed"/>
   <br/>
   <ProductList products={PRODUCTS}/>
+  <EventButton/>
 
   <Footer/>
   </div>
 
   );
 }
+
+/* This section show how to work with events and states*/
+
+function EventButton(){
+  //state gives possibility to save a value, first item of array is the value, second a setter
+const [likes, setLikes] = React.useState(0);
+
+  return(
+    <div>
+      <button onClick={handleClick}>Like: {likes}</button>
+    </div>
+  );
+
+  //note: this gets called at every Button click -> component gets recreated after every event?
+  console.log("the state at current state:", likes);
+  //note: logic for updating state should live inside respective component
+  function handleClick(){
+    console.log("Like clicked");
+    setLikes(likes +1);
+  }
+}
+
+
+/* This section shows how to handle properties */
 
 //note: there seems to bee an TS Error regarding the passing of generics as attrbutes
 function ProductList({products}: Array<String>){
@@ -66,7 +97,7 @@ function AcceptsProps(props: any){
      );
   }
 
-
+/* This section shows how to use static html*/
 function Header(){
 return(
     <header>
