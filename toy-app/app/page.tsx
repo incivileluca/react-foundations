@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
-import {EventButton} from './EventButton';
-import {ProductList} from './ProductList';
-import {DivwithContent, DivwithContentFallback} from "@/CustomDivs";
+import {EventButton} from './CustomComponents/EventButton';
+import {ProductList} from './CustomComponents/ProductList';
+import {DivwithContent, DivwithContentFallback} from "./CustomComponents/CustomDivs";
 
 
 //export default -> main component of page
